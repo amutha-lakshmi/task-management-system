@@ -11,8 +11,18 @@ dotenv.config();
 
 const app = express();
 
+// CORS Configuration
+app.use(
+  cors({
+    origin: [
+      "http://localhost:5173",
+      "https://task-management-system-plum-nine.vercel.app",
+    ],
+    credentials: true,
+  })
+);
+
 // Middleware
-app.use(cors());
 app.use(express.json());
 
 // Routes
@@ -27,7 +37,7 @@ mongoose
     console.log("MongoDB Connected");
   })
   .catch((err) => {
-    console.log(err);
+    console.log("MongoDB Error:", err);
   });
 
 // Test Route
