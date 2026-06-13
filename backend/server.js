@@ -12,13 +12,11 @@ dotenv.config();
 const app = express();
 
 // CORS Configuration
-app.use(
-  cors({
-    origin: true,
-    credentials: true,
-  })
-);
-
+app.get("/cors-test", (req, res) => {
+  res.json({
+    message: "CORS TEST WORKING"
+  });
+});
 // Middleware
 app.use(express.json());
 
